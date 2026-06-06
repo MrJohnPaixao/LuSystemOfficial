@@ -47,10 +47,17 @@ body::before {
   z-index: 0;
   pointer-events: none;
   background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 22% 62%, rgba(0, 229, 255, 0.62) 0 1px, transparent 1.9px),
+    radial-gradient(circle at 38% 28%, rgba(255, 255, 255, 0.46) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 58% 72%, rgba(200, 255, 0, 0.48) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 78% 24%, rgba(255, 255, 255, 0.52) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 88% 56%, rgba(0, 229, 255, 0.46) 0 1px, transparent 1.8px),
     linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
-  background-size: 72px 72px;
+  background-size: 520px 520px, 610px 610px, 470px 470px, 680px 680px, 560px 560px, 720px 720px, 72px 72px, 72px 72px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 82%);
+  animation: star-drift 46s linear infinite;
   content: "";
 }
 
@@ -82,6 +89,44 @@ main,
 footer {
   position: relative;
   z-index: 1;
+}
+
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.starfield span {
+  position: absolute;
+  top: 18%;
+  left: 72%;
+  width: 160px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(0, 229, 255, 0.62), transparent);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.42);
+  transform: rotate(-28deg) translateX(160px);
+  opacity: 0;
+  animation: shooting-star 8.5s ease-in-out infinite;
+}
+
+.starfield span:nth-child(2) {
+  top: 38%;
+  left: 86%;
+  width: 120px;
+  animation-delay: 3.1s;
+  animation-duration: 10.5s;
+}
+
+.starfield span:nth-child(3) {
+  top: 68%;
+  left: 62%;
+  width: 190px;
+  animation-delay: 6.4s;
+  animation-duration: 12s;
 }
 
 a {
@@ -738,9 +783,12 @@ p {
 }
 
 .contact-link {
+  position: relative;
   display: grid;
-  gap: 5px;
-  padding: 14px 16px;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  padding: 13px 15px;
   overflow: hidden;
   border: 1px solid var(--lu-line-soft);
   border-radius: 8px;
@@ -748,7 +796,54 @@ p {
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
-.contact-link span {
+.contact-link::before {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  content: "";
+}
+
+.contact-link::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.13), transparent);
+  transform: translateX(-120%);
+  transition: transform 420ms ease;
+  content: "";
+}
+
+.contact-link:hover::after {
+  transform: translateX(120%);
+}
+
+.contact-icon,
+.contact-text {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #06101a;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.contact-text {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+}
+
+.contact-text span {
   color: var(--lu-muted);
   font-family: var(--font-alt);
   font-size: 0.7rem;
@@ -757,7 +852,7 @@ p {
   text-transform: uppercase;
 }
 
-.contact-link strong {
+.contact-text strong {
   color: #eef8ff;
   font-family: var(--font-alt);
   font-size: clamp(0.9rem, 1.3vw, 1.05rem);
@@ -765,13 +860,46 @@ p {
   overflow-wrap: anywhere;
 }
 
-.contact-link.primary {
-  border-color: rgba(200, 255, 0, 0.42);
-  background: linear-gradient(135deg, rgba(200, 255, 0, 0.14), rgba(0, 229, 255, 0.08));
+.contact-email {
+  border-color: rgba(234, 67, 53, 0.35);
 }
 
-.contact-link.primary span,
-.contact-link:hover span {
+.contact-email::before {
+  background: linear-gradient(135deg, #ea4335, #fbbc04 34%, #34a853 66%, #4285f4);
+}
+
+.contact-email .contact-icon {
+  background: linear-gradient(135deg, #ea4335, #fbbc04 45%, #34a853 70%, #4285f4);
+  box-shadow: 0 0 20px rgba(66, 133, 244, 0.18);
+}
+
+.contact-whatsapp {
+  border-color: rgba(37, 211, 102, 0.36);
+}
+
+.contact-whatsapp::before {
+  background: linear-gradient(135deg, #25d366, var(--lu-secondary));
+}
+
+.contact-whatsapp .contact-icon {
+  background: linear-gradient(135deg, #25d366, var(--lu-secondary));
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.22);
+}
+
+.contact-linkedin {
+  border-color: rgba(10, 102, 194, 0.42);
+}
+
+.contact-linkedin::before {
+  background: linear-gradient(135deg, #0a66c2, var(--lu-accent));
+}
+
+.contact-linkedin .contact-icon {
+  background: linear-gradient(135deg, #0a66c2, var(--lu-accent));
+  box-shadow: 0 0 20px rgba(10, 102, 194, 0.22);
+}
+
+.contact-link:hover .contact-text span {
   color: var(--lu-primary);
 }
 
@@ -796,6 +924,42 @@ footer {
 @keyframes energy-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes star-drift {
+  to {
+    background-position:
+      120px 80px,
+      -90px 140px,
+      80px -120px,
+      -140px -80px,
+      110px -70px,
+      -120px 100px,
+      72px 72px,
+      72px 72px;
+  }
+}
+
+@keyframes shooting-star {
+  0%,
+  66% {
+    opacity: 0;
+    transform: rotate(-28deg) translateX(160px);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  82% {
+    opacity: 0;
+    transform: rotate(-28deg) translateX(-720px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-28deg) translateX(-720px);
   }
 }
 
@@ -1097,7 +1261,13 @@ footer {
   }
 
   .contact-link {
-    padding: 14px;
+    grid-template-columns: 40px minmax(0, 1fr);
+    padding: 12px;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
   }
 
   footer {
