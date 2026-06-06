@@ -36,9 +36,17 @@ body {
   line-height: 1.5;
   color: var(--lu-text);
   background:
+    radial-gradient(circle at 8% 14%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 18% 72%, rgba(0, 229, 255, 0.62) 0 1px, transparent 1.9px),
+    radial-gradient(circle at 36% 26%, rgba(255, 255, 255, 0.48) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 54% 68%, rgba(200, 255, 0, 0.48) 0 1px, transparent 1.9px),
+    radial-gradient(circle at 76% 18%, rgba(255, 255, 255, 0.58) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 90% 58%, rgba(0, 229, 255, 0.5) 0 1px, transparent 1.8px),
     radial-gradient(100% 75% at 82% 0%, rgba(0, 229, 255, 0.18), transparent 58%),
     radial-gradient(80% 60% at 8% 38%, rgba(123, 255, 106, 0.08), transparent 60%),
     linear-gradient(145deg, #070b16 0%, var(--lu-bg) 46%, #050812 100%);
+  background-attachment: fixed;
+  background-size: 420px 420px, 620px 620px, 520px 520px, 760px 760px, 680px 680px, 560px 560px, auto, auto, auto;
 }
 
 body::before {
@@ -56,7 +64,7 @@ body::before {
     linear-gradient(rgba(0, 229, 255, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
   background-size: 520px 520px, 610px 610px, 470px 470px, 680px 680px, 560px 560px, 720px 720px, 72px 72px, 72px 72px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 82%);
+  opacity: 0.8;
   animation: star-drift 46s linear infinite;
   content: "";
 }
@@ -426,7 +434,25 @@ p {
   scroll-margin-top: 78px;
 }
 
+.section::before,
+.contact::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 24%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 32% 76%, rgba(0, 229, 255, 0.5) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 68% 30%, rgba(255, 255, 255, 0.38) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 88% 64%, rgba(200, 255, 0, 0.36) 0 1px, transparent 1.8px);
+  background-size: 360px 360px, 520px 520px, 440px 440px, 610px 610px;
+  opacity: 0.55;
+  content: "";
+}
+
 .section-heading {
+  position: relative;
+  z-index: 1;
   width: min(780px, 100%);
   margin-bottom: 26px;
 }
@@ -452,6 +478,8 @@ p {
 }
 
 .service-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 18px;
@@ -647,13 +675,7 @@ p {
 }
 
 .about-photo::after {
-  position: absolute;
-  inset: 3%;
-  z-index: 2;
-  border: 1px solid rgba(0, 229, 255, 0.32);
-  border-radius: 999px 999px 10px 10px;
-  content: "";
-  pointer-events: none;
+  display: none;
 }
 
 .about-photo img {
@@ -661,7 +683,7 @@ p {
   width: 100%;
   aspect-ratio: 4 / 5.1;
   object-fit: cover;
-  border-radius: 999px 999px 12px 12px;
+  border-radius: 6px;
   filter:
     drop-shadow(0 0 22px rgba(0, 229, 255, 0.32))
     drop-shadow(0 24px 46px rgba(0, 0, 0, 0.42));
@@ -756,8 +778,12 @@ p {
   gap: clamp(24px, 4vw, 54px);
   align-items: center;
   background:
+    radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 72% 38%, rgba(0, 229, 255, 0.42) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 52% 78%, rgba(200, 255, 0, 0.36) 0 1px, transparent 1.8px),
     radial-gradient(70% 95% at 82% 50%, rgba(0, 229, 255, 0.2), transparent 58%),
     linear-gradient(135deg, #07101d, var(--lu-mid));
+  background-size: 420px 420px, 620px 620px, 520px 520px, auto, auto;
 }
 
 .contact > div,
@@ -829,12 +855,30 @@ p {
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 8px;
-  color: #06101a;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  text-transform: none;
+  color: #ffffff;
+}
+
+.contact-icon svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.contact-linkedin .contact-icon svg path,
+.contact-whatsapp .contact-icon svg path {
+  fill: currentColor;
+  stroke: none;
+}
+
+.contact-whatsapp .contact-icon svg path:first-child {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
 }
 
 .contact-text {
@@ -869,8 +913,11 @@ p {
 }
 
 .contact-email .contact-icon {
-  background: linear-gradient(135deg, #ea4335, #fbbc04 45%, #34a853 70%, #4285f4);
-  box-shadow: 0 0 20px rgba(66, 133, 244, 0.18);
+  background:
+    linear-gradient(135deg, rgba(234, 67, 53, 0.24), rgba(251, 188, 4, 0.18) 42%, rgba(52, 168, 83, 0.2) 68%, rgba(66, 133, 244, 0.28)),
+    rgba(10, 15, 30, 0.74);
+  box-shadow: 0 0 20px rgba(66, 133, 244, 0.22);
+  color: #ffffff;
 }
 
 .contact-whatsapp {
@@ -882,8 +929,11 @@ p {
 }
 
 .contact-whatsapp .contact-icon {
-  background: linear-gradient(135deg, #25d366, var(--lu-secondary));
+  background:
+    linear-gradient(135deg, rgba(37, 211, 102, 0.32), rgba(123, 255, 106, 0.18)),
+    rgba(10, 15, 30, 0.74);
   box-shadow: 0 0 20px rgba(37, 211, 102, 0.22);
+  color: #25d366;
 }
 
 .contact-linkedin {
@@ -895,8 +945,11 @@ p {
 }
 
 .contact-linkedin .contact-icon {
-  background: linear-gradient(135deg, #0a66c2, var(--lu-accent));
+  background:
+    linear-gradient(135deg, rgba(10, 102, 194, 0.32), rgba(0, 229, 255, 0.18)),
+    rgba(10, 15, 30, 0.74);
   box-shadow: 0 0 20px rgba(10, 102, 194, 0.22);
+  color: #6fb7ff;
 }
 
 .contact-link:hover .contact-text span {
