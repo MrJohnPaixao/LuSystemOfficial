@@ -7,274 +7,451 @@
       name="description"
       content="Lu System: tecnologia inteligente, transformação digital e soluções avançadas para negócios e pessoas."
     >
+    <meta name="theme-color" content="#0A0F1E">
     <title>Lu System | Tecnologia Inteligente</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div class="starfield" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <header class="site-header">
-      <a class="brand" href="#inicio" aria-label="Lu System">
+    <!-- ===== Cosmic background layers ===== -->
+    <div class="space" aria-hidden="true"></div>
+    <canvas class="stars" aria-hidden="true"></canvas>
+    <div class="energy" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+
+    <!-- ===== Header ===== -->
+    <header class="site-header" data-reveal-skip>
+      <a class="brand" href="#inicio" aria-label="Lu System — início">
         <img src="book_identidade/assets/lu-moon.svg" alt="">
         <span><strong>LU</strong> SYSTEM</span>
       </a>
-      <nav aria-label="Navegação principal">
-        <a href="#servicos">Soluções</a>
+      <nav class="nav-desktop" aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#lunya">Lunya</a>
         <a href="#quem-somos">Quem somos</a>
-        <a href="#processo">Método</a>
-        <a href="#sobre">Sobre</a>
+        <a href="#metodo">Método</a>
+        <a href="#fundador">Fundador</a>
         <a href="#contato">Contato</a>
       </nav>
+      <a class="nav-cta" href="#contato">Iniciar projeto</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
     </header>
 
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav aria-label="Navegação móvel">
+        <a href="#solucoes">Soluções</a>
+        <a href="#lunya">Lunya</a>
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#metodo">Método</a>
+        <a href="#fundador">Fundador</a>
+        <a href="#contato">Contato</a>
+        <a class="mobile-cta" href="#contato">Iniciar projeto</a>
+      </nav>
+    </div>
+
     <main>
-      <section class="hero" id="inicio">
-        <div class="hero-orbit" aria-hidden="true">
-          <img src="book_identidade/assets/lu-moon.svg" alt="">
+      <!-- ===== HERO ===== -->
+      <section class="hero" id="inicio" data-screen-label="Hero">
+        <div class="hero-moon" aria-hidden="true">
+          <img src="book_identidade/assets/lu-moon.svg" alt="" data-parallax="0.04">
+          <span class="orbit-ring orbit-ring--1"></span>
+          <span class="orbit-ring orbit-ring--2"></span>
+          <span class="orbit-dot"></span>
         </div>
-        <div class="hero-content">
-          <p class="eyebrow">Inteligência digital</p>
-          <h1>
-            <span>LU</span>
-            <span>SYSTEM</span>
+
+        <div class="hero-inner">
+          <p class="hero-kicker"><span class="dot"></span>Inteligência digital · 2026</p>
+          <h1 class="wordmark">
+            <span class="wordmark-lu">LU</span>
+            <span class="wordmark-system">SYSTEM</span>
           </h1>
-          <p class="hero-text">
-            Tecnologia inteligente para decisões estratégicas. A Lu System
-            transforma dados, processos e informações em clareza, eficiência e
-            vantagem competitiva.
+          <p class="hero-tagline">
+            Tecnologia inteligente para decisões estratégicas. Transformamos
+            dados, processos e informação em clareza, eficiência e vantagem
+            competitiva.
           </p>
           <div class="hero-signals" aria-label="Pilares da Lu System">
-            <span>Dados</span>
-            <span>Automação</span>
-            <span>Decisão</span>
+            <span data-mono="01">Dados</span>
+            <span data-mono="02">Automação</span>
+            <span data-mono="03">Decisão</span>
           </div>
-          <div class="hero-actions" aria-label="Ações principais">
-            <a class="button primary" href="#contato">Iniciar projeto</a>
-            <a class="button secondary" href="#servicos">Conhecer soluções</a>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="#contato">
+              Iniciar projeto
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
+            <a class="btn btn--ghost" href="#solucoes">Conhecer soluções</a>
           </div>
         </div>
+
+        <a class="scroll-hint" href="#solucoes" aria-label="Rolar para soluções">
+          <span class="mouse"></span>
+          <span class="scroll-hint-label">Role para explorar</span>
+        </a>
       </section>
 
-      <section class="section services" id="servicos">
-        <div class="section-heading">
-          <p class="eyebrow">Soluções</p>
-          <h2>Soluções digitais inteligentes.</h2>
-          <p>
-            A Lu System conecta estratégia, dados e engenharia para transformar
-            operações em experiências digitais mais inteligentes, escaláveis e
-            orientadas a resultado.
-          </p>
+      <!-- ===== TICKER ===== -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>Dados</span><i>✦</i><span>Automação</span><i>✦</i><span>Decisão</span><i>✦</i>
+          <span>Inteligência</span><i>✦</i><span>Engenharia aplicada</span><i>✦</i><span>Produtos digitais</span><i>✦</i>
+          <span>Governança</span><i>✦</i><span>Evolução contínua</span><i>✦</i>
+          <span>Dados</span><i>✦</i><span>Automação</span><i>✦</i><span>Decisão</span><i>✦</i>
+          <span>Inteligência</span><i>✦</i><span>Engenharia aplicada</span><i>✦</i><span>Produtos digitais</span><i>✦</i>
+          <span>Governança</span><i>✦</i><span>Evolução contínua</span><i>✦</i>
         </div>
+      </div>
 
-        <div class="solution-carousel" aria-label="Soluções Lu System">
-          <article class="solution-card featured">
-            <span>Lunya</span>
-            <h3>Inteligência financeira pessoal.</h3>
-            <p>
-              Solução em desenvolvimento para organizar finanças, automatizar
-              análises e apoiar decisões com mais clareza no dia a dia.
+      <!-- ===== SOLUÇÕES (bento) ===== -->
+      <section class="section solutions" id="solucoes" data-screen-label="Soluções">
+        <span class="section-no" aria-hidden="true">01</span>
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="eyebrow"><span class="idx">01</span> Soluções</p>
+            <h2 class="title">Soluções digitais<br>inteligentes</h2>
+            <p class="lead">
+              Conectamos estratégia, dados e engenharia para transformar operações
+              em experiências digitais mais inteligentes, escaláveis e orientadas a
+              resultado.
             </p>
-          </article>
-          <article class="solution-card">
-            <span>Web</span>
-            <h3>Presença digital</h3>
-            <p>
-              Experiências web com autoridade, clareza e performance para
-              apresentar marcas, produtos e negócios com impacto.
+          </header>
+
+          <div class="bento reveal">
+            <article class="bento-card bento-card--feature">
+              <div class="bento-top">
+                <span class="bento-tag">Lunya</span>
+                <span class="badge badge--dev">Em desenvolvimento</span>
+              </div>
+              <h3>Inteligência financeira pessoal</h3>
+              <p>
+                Plataforma para organizar finanças, automatizar análises e apoiar
+                decisões com mais clareza no dia a dia. Em construção pela Lu System.
+              </p>
+              <a class="bento-link" href="#lunya">
+                Ver o produto
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+              <span class="bento-glow" aria-hidden="true"></span>
+            </article>
+
+            <article class="bento-card">
+              <span class="bento-tag">Web</span>
+              <h3>Presença digital</h3>
+              <p>
+                Experiências web com autoridade, clareza e performance para
+                apresentar marcas, produtos e negócios com impacto.
+              </p>
+            </article>
+
+            <article class="bento-card">
+              <span class="bento-tag">Fluxos</span>
+              <h3>Automação inteligente</h3>
+              <p>
+                Rotinas mais produtivas, menos esforço repetitivo e mais velocidade
+                para operações que precisam evoluir.
+              </p>
+            </article>
+
+            <article class="bento-card bento-card--wide">
+              <span class="bento-tag">Marca</span>
+              <h3>Experiência &amp; identidade</h3>
+              <p>
+                Interface, conteúdo e marca trabalhando juntos para gerar confiança,
+                posicionamento e valor percebido.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== LUNYA SPOTLIGHT ===== -->
+      <section class="section lunya" id="lunya" data-screen-label="Lunya">
+        <div class="wrap lunya-grid">
+          <div class="lunya-copy reveal">
+            <p class="eyebrow"><span class="idx">02</span> Produto em destaque</p>
+            <h2 class="title lunya-title">Lunya</h2>
+            <p class="lunya-sub">Inteligência financeira pessoal</p>
+            <p class="lead">
+              Uma camada de inteligência sobre o seu dinheiro: organiza, categoriza
+              e antecipa. Menos planilha, mais decisão — com a clareza que a Lu
+              System leva para cada produto.
             </p>
-          </article>
-          <article class="solution-card">
-            <span>Fluxos</span>
-            <h3>Automação inteligente</h3>
-            <p>
-              Rotinas mais produtivas, menos esforço repetitivo e mais velocidade
-              para operações que precisam evoluir.
+            <ul class="lunya-feats">
+              <li><span class="tick" aria-hidden="true">✦</span>Organização automática de finanças</li>
+              <li><span class="tick" aria-hidden="true">✦</span>Análises e padrões em tempo real</li>
+              <li><span class="tick" aria-hidden="true">✦</span>Decisões guiadas por dados</li>
+            </ul>
+            <div class="lunya-actions">
+              <a class="btn btn--primary" href="#contato">
+                Entrar na lista
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </a>
+              <span class="lunya-status"><span class="pulse"></span>Em breve</span>
+            </div>
+          </div>
+
+          <div class="lunya-device reveal">
+            <div class="phone">
+              <span class="notch" aria-hidden="true"></span>
+              <div class="phone-screen">
+                <div class="ph-head">
+                  <div class="ph-brand"><span class="lu">LU</span><span class="sy">NYA</span></div>
+                  <span class="ph-avatar" aria-hidden="true"></span>
+                </div>
+                <div class="ph-balance">
+                  <span class="ph-label">Saldo consolidado</span>
+                  <strong>R$ 24.860<span>,00</span></strong>
+                  <span class="ph-delta">▲ 12,4% este mês</span>
+                </div>
+                <div class="ph-chart" aria-hidden="true">
+                  <svg viewBox="0 0 240 90" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="phFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="rgba(0,229,255,0.34)"></stop>
+                        <stop offset="1" stop-color="rgba(0,229,255,0)"></stop>
+                      </linearGradient>
+                    </defs>
+                    <path class="ph-area" d="M0 70 L30 58 L60 64 L90 42 L120 50 L150 28 L180 36 L210 18 L240 24 L240 90 L0 90 Z" fill="url(#phFill)"></path>
+                    <path class="ph-line" d="M0 70 L30 58 L60 64 L90 42 L120 50 L150 28 L180 36 L210 18 L240 24" fill="none"></path>
+                  </svg>
+                </div>
+                <div class="ph-rows">
+                  <div class="ph-row"><span class="ph-ic"></span><span class="ph-txt">Investimentos</span><span class="ph-val">+ R$ 1.240</span></div>
+                  <div class="ph-row"><span class="ph-ic ph-ic--lime"></span><span class="ph-txt">Recorrentes</span><span class="ph-val">— R$ 480</span></div>
+                  <div class="ph-row"><span class="ph-ic ph-ic--green"></span><span class="ph-txt">Reserva</span><span class="ph-val">+ R$ 900</span></div>
+                </div>
+              </div>
+            </div>
+            <span class="lunya-device-glow" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== QUEM SOMOS ===== -->
+      <section class="section manifesto" id="quem-somos" data-screen-label="Quem somos">
+        <span class="section-no" aria-hidden="true">03</span>
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="eyebrow"><span class="idx">03</span> Quem somos</p>
+            <h2 class="title big-statement">
+              Tecnologia para<br><em>decisões melhores.</em>
+            </h2>
+          </header>
+          <div class="manifesto-grid">
+            <div class="manifesto-copy reveal">
+              <p>
+                A tecnologia deve ser mais do que uma ferramenta. Ela deve atuar
+                como parceira estratégica em um mundo movido por dados, velocidade e
+                transformação constante.
+              </p>
+              <p>
+                Cada sistema, aplicação ou plataforma criada pela Lu System nasce
+                com um objetivo claro: converter informações em inteligência,
+                processos em eficiência e desafios em oportunidades.
+              </p>
+            </div>
+            <ul class="values reveal" aria-label="Valores da Lu System">
+              <li><span class="v-no">01</span>Inovação</li>
+              <li><span class="v-no">02</span>Inteligência</li>
+              <li><span class="v-no">03</span>Confiabilidade</li>
+              <li><span class="v-no">04</span>Eficiência</li>
+              <li><span class="v-no">05</span>Simplicidade</li>
+              <li><span class="v-no">06</span>Evolução contínua</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MÉTODO ===== -->
+      <section class="section method" id="metodo" data-screen-label="Método">
+        <span class="section-no" aria-hidden="true">04</span>
+        <div class="wrap">
+          <header class="section-head reveal">
+            <p class="eyebrow"><span class="idx">04</span> Método Lu System</p>
+            <h2 class="title">Método para evoluir</h2>
+            <p class="lead">
+              Um caminho claro do diagnóstico à evolução contínua — desenhado para
+              gerar resultado real, não apenas entregar tecnologia.
             </p>
-          </article>
-          <article class="solution-card">
-            <span>Marca</span>
-            <h3>Experiência e identidade</h3>
+          </header>
+          <ol class="steps reveal">
+            <li class="step">
+              <span class="step-no">01</span>
+              <h3>Diagnóstico estratégico</h3>
+              <p>Objetivos, dados e operação ganham leitura clara para revelar prioridades reais.</p>
+            </li>
+            <li class="step">
+              <span class="step-no">02</span>
+              <h3>Engenharia aplicada</h3>
+              <p>Produtos digitais, automações e interfaces nascem com foco em uso, escala e resultado.</p>
+            </li>
+            <li class="step">
+              <span class="step-no">03</span>
+              <h3>Evolução contínua</h3>
+              <p>Cada entrega abre caminho para novas melhorias, mais inteligência e decisões melhores.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== FUNDADOR ===== -->
+      <section class="section founder" id="fundador" data-screen-label="Fundador">
+        <span class="section-no" aria-hidden="true">05</span>
+        <div class="wrap founder-grid">
+          <div class="founder-photo reveal">
+            <div class="founder-photo-frame">
+              <img src="Johnny.PNG" alt="Johnny Luna da Paixão, fundador da Lu System">
+            </div>
+            <div class="founder-badge">
+              <strong>Fundador</strong>
+              <span>Negócios · Dados · Tecnologia</span>
+            </div>
+            <span class="founder-photo-glow" aria-hidden="true"></span>
+          </div>
+          <div class="founder-copy reveal">
+            <p class="eyebrow"><span class="idx">05</span> Sobre o fundador</p>
+            <h2 class="title">Johnny Luna<br>da Paixão</h2>
             <p>
-              Interface, conteúdo e marca trabalhando juntos para gerar confiança,
-              posicionamento e valor percebido.
+              Minha trajetória foi construída na interseção entre negócios, finanças,
+              dados e tecnologia. Sou graduado em Administração, pós-graduado em
+              Ciência de Dados e atualmente pós-graduando em Engenharia de Software.
             </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section manifesto" id="quem-somos">
-        <div class="manifesto-mark" aria-hidden="true">
-          <img src="book_identidade/assets/lu-moon.svg" alt="">
-        </div>
-        <div class="manifesto-copy">
-          <p class="eyebrow">Quem somos</p>
-          <h2>Tecnologia para decisões melhores.</h2>
-          <p>
-            A tecnologia deve ser mais do que uma ferramenta. Ela deve atuar como
-            parceira estratégica em um mundo movido por dados, velocidade e
-            transformação constante.
-          </p>
-          <p>
-            Cada sistema, aplicação ou plataforma criada pela Lu System nasce com
-            um objetivo claro: converter informações em inteligência, processos
-            em eficiência e desafios em oportunidades.
-          </p>
-        </div>
-        <div class="manifesto-values" aria-label="Valores da Lu System">
-          <span>Inovação</span>
-          <span>Inteligência</span>
-          <span>Confiabilidade</span>
-          <span>Eficiência</span>
-          <span>Simplicidade</span>
-          <span>Evolução contínua</span>
-        </div>
-      </section>
-
-      <section class="section process" id="processo">
-        <div class="section-heading compact">
-          <p class="eyebrow">Método Lu System</p>
-          <h2>Método para evoluir.</h2>
-        </div>
-        <div class="process-list">
-          <div>
-            <strong>Diagnóstico estratégico</strong>
-            <p>Objetivos, dados e operação ganham leitura clara para revelar prioridades reais.</p>
-          </div>
-          <div>
-            <strong>Engenharia aplicada</strong>
-            <p>Produtos digitais, automações e interfaces nascem com foco em uso, escala e resultado.</p>
-          </div>
-          <div>
-            <strong>Evolução contínua</strong>
-            <p>Cada entrega abre caminho para novas melhorias, mais inteligência e decisões melhores.</p>
+            <p>
+              Ao longo dos anos desenvolvi experiência em gestão, governança,
+              operações, finanças, análise de crédito e transformação de processos,
+              atuando em ambientes de alta responsabilidade e tomada de decisão.
+            </p>
+            <p>
+              A Lu System nasceu da convicção de que a tecnologia deve ser mais do
+              que ferramentas e códigos. Ela deve gerar valor, inteligência,
+              produtividade e transformação para negócios e pessoas.
+            </p>
+            <ul class="chips" aria-label="Áreas de atuação">
+              <li>Administração</li>
+              <li>Ciência de Dados</li>
+              <li>Engenharia de Software</li>
+              <li>Governança</li>
+              <li>Automação</li>
+              <li>Produtos digitais</li>
+            </ul>
+            <p class="founder-statement">Tecnologia inteligente para soluções avançadas.</p>
           </div>
         </div>
       </section>
 
-      <section class="section about" id="sobre">
-        <div class="about-photo">
-          <img src="Johnny.PNG" alt="Foto de Johnny Luna">
-          <div class="photo-caption" aria-hidden="true">
-            <strong>Fundador</strong>
-            <span>Negócios · Dados · Tecnologia</span>
+      <!-- ===== CONTATO ===== -->
+      <section class="section contact" id="contato" data-screen-label="Contato">
+        <div class="wrap contact-grid">
+          <div class="contact-copy reveal">
+            <p class="eyebrow"><span class="idx">06</span> Contato</p>
+            <h2 class="title">Vamos transformar<br>sua operação</h2>
+            <p class="lead">
+              A Lu System cria soluções digitais para automatizar processos,
+              organizar informação e impulsionar decisões com mais clareza.
+              Conte o desafio — respondemos rápido.
+            </p>
+            <a class="btn btn--primary btn--lg" href="mailto:lusystemps@gmail.com">
+              Iniciar conversa
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </a>
           </div>
-        </div>
-        <div class="about-copy">
-          <p class="eyebrow">Sobre o fundador</p>
-          <h2>Johnny Luna da Paixão.</h2>
-          <p>
-            Minha trajetória profissional foi construída na interseção entre
-            negócios, finanças, dados e tecnologia. Sou graduado em Administração,
-            pós-graduado em Ciência de Dados e atualmente pós-graduando em
-            Engenharia de Software.
-          </p>
-          <p>
-            Ao longo dos anos desenvolvi experiência em gestão, governança,
-            operações, finanças, análise de crédito e transformação de processos,
-            atuando em ambientes de alta responsabilidade e tomada de decisão.
-          </p>
-          <p>
-            A Lu System nasceu da convicção de que a tecnologia deve ser mais do
-            que ferramentas e códigos. Ela deve gerar valor, inteligência,
-            produtividade e transformação para negócios e pessoas.
-          </p>
-          <div class="founder-highlights" aria-label="Áreas de atuação do fundador">
-            <span>Administração</span>
-            <span>Ciência de Dados</span>
-            <span>Engenharia de Software</span>
-            <span>Governança</span>
-            <span>Automação</span>
-            <span>Produtos digitais</span>
-          </div>
-          <p class="founder-statement">
-            Tecnologia Inteligente para Soluções Avançadas.
-          </p>
-        </div>
-      </section>
 
-      <section class="contact" id="contato">
-        <div>
-          <p class="eyebrow">Contato</p>
-          <h2>Vamos transformar sua operação.</h2>
-          <p>
-            A Lu System cria soluções digitais para automatizar processos,
-            organizar informação e impulsionar decisões com mais clareza.
-          </p>
-        </div>
-        <div class="contact-actions" aria-label="Canais de contato da Lu System">
-          <a class="contact-link contact-email" href="mailto:lusystemps@gmail.com">
-            <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M3.5 6.5h17v11h-17z"></path>
-                <path d="m4.4 7.2 7.6 6 7.6-6"></path>
-                <path d="m4.5 17 5.4-5.1"></path>
-                <path d="m19.5 17-5.4-5.1"></path>
-              </svg>
-            </span>
-            <span class="contact-text">
-              <span>E-mail</span>
-              <strong>lusystemps@gmail.com</strong>
-            </span>
-          </a>
-          <a class="contact-link contact-whatsapp" href="https://wa.me/5568992236431" target="_blank" rel="noopener noreferrer">
-            <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M12 3.7a8.1 8.1 0 0 0-6.9 12.4l-.9 3.7 3.8-1A8.1 8.1 0 1 0 12 3.7Z"></path>
-                <path d="M8.8 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.5l-.5.6c.7 1.2 1.6 2 2.9 2.6l.6-.7c.1-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.6v.5c0 .4-.2.7-.5.9-.7.4-1.8.3-3.2-.4-1.5-.7-2.7-1.8-3.6-3.2-.8-1.3-1.1-2.5-.8-3.2Z"></path>
-              </svg>
-            </span>
-            <span class="contact-text">
-              <span>WhatsApp</span>
-              <strong>+55 68 99223-6431</strong>
-            </span>
-          </a>
-          <a class="contact-link contact-linkedin" href="https://www.linkedin.com/in/johnnyluna6619/" target="_blank" rel="noopener noreferrer">
-            <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M5 9h3.2v10H5z"></path>
-                <path d="M6.6 5a1.8 1.8 0 1 1 0 3.6A1.8 1.8 0 0 1 6.6 5Z"></path>
-                <path d="M11 9h3v1.4c.5-.9 1.5-1.7 3.1-1.7 2.4 0 3.9 1.6 3.9 4.7V19h-3.2v-5.1c0-1.4-.5-2.3-1.7-2.3-1.1 0-1.8.8-1.8 2.3V19H11z"></path>
-              </svg>
-            </span>
-            <span class="contact-text">
-              <span>LinkedIn</span>
-              <strong>johnnyluna6619</strong>
-            </span>
-          </a>
-          <a class="contact-link contact-instagram" href="https://www.instagram.com/johnny_lunap/" target="_blank" rel="noopener noreferrer">
-            <span class="contact-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <rect x="5" y="5" width="14" height="14" rx="4"></rect>
-                <circle cx="12" cy="12" r="3.2"></circle>
-                <circle cx="16.5" cy="7.5" r="0.8"></circle>
-              </svg>
-            </span>
-            <span class="contact-text">
-              <span>Instagram</span>
-              <strong>@johnny_lunap</strong>
-            </span>
-          </a>
+          <div class="contact-actions reveal" aria-label="Canais de contato">
+            <a class="contact-link contact-email" href="mailto:lusystemps@gmail.com">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M3.5 6.5h17v11h-17z"></path>
+                  <path d="m4.4 7.2 7.6 6 7.6-6"></path>
+                </svg>
+              </span>
+              <span class="contact-text">
+                <span>E-mail</span>
+                <strong>lusystemps@gmail.com</strong>
+              </span>
+              <svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+            </a>
+            <a class="contact-link contact-whatsapp" href="https://wa.me/5568992236431" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 3.7a8.1 8.1 0 0 0-6.9 12.4l-.9 3.7 3.8-1A8.1 8.1 0 1 0 12 3.7Z"></path>
+                  <path d="M8.8 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .4-.1.5l-.5.6c.7 1.2 1.6 2 2.9 2.6l.6-.7c.1-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.6v.5c0 .4-.2.7-.5.9-.7.4-1.8.3-3.2-.4-1.5-.7-2.7-1.8-3.6-3.2-.8-1.3-1.1-2.5-.8-3.2Z"></path>
+                </svg>
+              </span>
+              <span class="contact-text">
+                <span>WhatsApp</span>
+                <strong>+55 68 99223-6431</strong>
+              </span>
+              <svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+            </a>
+            <a class="contact-link contact-linkedin" href="https://www.linkedin.com/in/johnnyluna6619/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M5 9h3.2v10H5z"></path>
+                  <path d="M6.6 5a1.8 1.8 0 1 1 0 3.6A1.8 1.8 0 0 1 6.6 5Z"></path>
+                  <path d="M11 9h3v1.4c.5-.9 1.5-1.7 3.1-1.7 2.4 0 3.9 1.6 3.9 4.7V19h-3.2v-5.1c0-1.4-.5-2.3-1.7-2.3-1.1 0-1.8.8-1.8 2.3V19H11z"></path>
+                </svg>
+              </span>
+              <span class="contact-text">
+                <span>LinkedIn</span>
+                <strong>johnnyluna6619</strong>
+              </span>
+              <svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+            </a>
+            <a class="contact-link contact-instagram" href="https://www.instagram.com/johnny_lunap/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <rect x="5" y="5" width="14" height="14" rx="4"></rect>
+                  <circle cx="12" cy="12" r="3.2"></circle>
+                  <circle cx="16.5" cy="7.5" r="0.8"></circle>
+                </svg>
+              </span>
+              <span class="contact-text">
+                <span>Instagram</span>
+                <strong>@johnny_lunap</strong>
+              </span>
+              <svg class="contact-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+            </a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <a class="footer-brand" href="#inicio" aria-label="Voltar ao início">
-        <img src="book_identidade/assets/lu-moon.svg" alt="">
-        <span><strong>LU</strong> SYSTEM</span>
-      </a>
-      <span>© 2026 Lu System. Tecnologia Inteligente para Soluções Avançadas.</span>
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-brand-col">
+          <a class="footer-brand" href="#inicio" aria-label="Lu System">
+            <img src="book_identidade/assets/lu-moon.svg" alt="">
+            <span><strong>LU</strong> SYSTEM</span>
+          </a>
+          <p class="footer-tag">Tecnologia inteligente para soluções avançadas.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Rodapé">
+          <a href="#solucoes">Soluções</a>
+          <a href="#lunya">Lunya</a>
+          <a href="#quem-somos">Quem somos</a>
+          <a href="#metodo">Método</a>
+          <a href="#fundador">Fundador</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+      <div class="wrap footer-bottom">
+        <span>© 2026 Lu System · Todos os direitos reservados.</span>
+        <a class="footer-top" href="#inicio">Voltar ao topo ↑</a>
+      </div>
     </footer>
+
+    <script src="app.js"></script>
   </body>
 </html>
