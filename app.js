@@ -16,9 +16,11 @@
     if (!cv) return;
     var ctx = cv.getContext("2d");
     var stars = [];
+    var meteors = [];
     var W = 0, H = 0;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var rafId = null;
+    var nextMeteorAt = 0;
 
     function build() {
       W = window.innerWidth;
@@ -30,6 +32,8 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var count = Math.min(260, Math.round((W * H) / 5400));
       stars = [];
+      meteors = [];
+      nextMeteorAt = 900 + Math.random() * 1400;
       for (var i = 0; i < count; i++) {
         var big = Math.random() < 0.16;
         stars.push({
@@ -50,6 +54,46 @@
       }
     }
 
+    function spawnMeteor(t) {
+      var fromRight = Math.random() > 0.35;
+      var length = 110 + Math.random() * 140;
+      var speed = 11 + Math.random() * 8;
+      meteors.push({
+        x: fromRight ? W + length : Math.random() * W * 0.78,
+        y: 20 + Math.random() * H * 0.52,
+        vx: fromRight ? -speed : speed * 0.62,
+        vy: speed * 0.34,
+        len: length,
+        life: 0,
+        max: 54 + Math.random() * 26,
+        hue: Math.random() > 0.42 ? "0,229,255" : "200,255,0"
+      });
+      nextMeteorAt = t + 1800 + Math.random() * 3600;
+    }
+
+    function drawMeteor(m) {
+      var fade = Math.sin(Math.min(1, m.life / m.max) * Math.PI);
+      var a = 0.16 + fade * 0.72;
+      var angle = Math.atan2(m.vy, m.vx);
+      var tx = Math.cos(angle) * m.len;
+      var ty = Math.sin(angle) * m.len;
+      var grad = ctx.createLinearGradient(m.x, m.y, m.x - tx, m.y - ty);
+      grad.addColorStop(0, "rgba(255,255,255," + (a * 0.95).toFixed(3) + ")");
+      grad.addColorStop(0.22, "rgba(" + m.hue + "," + a.toFixed(3) + ")");
+      grad.addColorStop(1, "rgba(" + m.hue + ",0)");
+      ctx.save();
+      ctx.lineCap = "round";
+      ctx.shadowColor = "rgba(" + m.hue + ",0.72)";
+      ctx.shadowBlur = 12;
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(m.x - tx, m.y - ty);
+      ctx.stroke();
+      ctx.restore();
+    }
+
     function draw(t) {
       ctx.clearRect(0, 0, W, H);
       for (var i = 0; i < stars.length; i++) {
@@ -68,7 +112,20 @@
         ctx.fill();
       }
       ctx.shadowBlur = 0;
-      rafId = requestAnimationFrame(draw);
+      if (!reduceMotion) {
+        if (t >= nextMeteorAt && meteors.length < 4) spawnMeteor(t);
+        for (var j = meteors.length - 1; j >= 0; j--) {
+          var m = meteors[j];
+          m.x += m.vx;
+          m.y += m.vy;
+          m.life += 1;
+          drawMeteor(m);
+          if (m.life > m.max || m.x < -m.len || m.x > W + m.len || m.y > H + m.len) {
+            meteors.splice(j, 1);
+          }
+        }
+        rafId = requestAnimationFrame(draw);
+      }
     }
 
     function start() {
