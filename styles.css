@@ -762,9 +762,9 @@ h1, h2, h3, p { margin: 0; }
 }
 
 /* ============================================================
-   Lunya spotlight
+   Órbita spotlight
    ============================================================ */
-.lunya {
+.orbita {
   padding-top: clamp(54px, 7vh, 88px);
   padding-bottom: clamp(66px, 8vh, 100px);
   border-top: 1px solid var(--lu-line-soft);
@@ -772,19 +772,19 @@ h1, h2, h3, p { margin: 0; }
     radial-gradient(80% 70% at 88% 30%, rgba(0, 229, 255, 0.08), transparent 60%),
     radial-gradient(70% 60% at 6% 80%, rgba(200, 255, 0, 0.05), transparent 62%);
 }
-.lunya-grid {
+.orbita-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: clamp(28px, 4.6vw, 68px);
   align-items: center;
 }
-.lunya-title {
+.orbita-title {
   font-size: clamp(3rem, 7vw, 5.4rem);
   color: var(--lu-primary);
   text-shadow: var(--glow-lime);
   margin-top: 4px;
 }
-.lunya-sub {
+.orbita-sub {
   margin-top: 6px;
   font-family: var(--font-alt);
   font-weight: 500;
@@ -792,8 +792,8 @@ h1, h2, h3, p { margin: 0; }
   letter-spacing: 0.04em;
   color: var(--lu-accent);
 }
-.lunya-feats { display: grid; gap: 12px; margin-top: 28px; }
-.lunya-feats li {
+.orbita-feats { display: grid; gap: 12px; margin-top: 28px; }
+.orbita-feats li {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -801,9 +801,9 @@ h1, h2, h3, p { margin: 0; }
   font-size: 1rem;
   color: var(--lu-dim);
 }
-.lunya-feats .tick { color: var(--lu-secondary); font-size: 0.8rem; }
-.lunya-actions { display: flex; align-items: center; gap: 18px; margin-top: 32px; flex-wrap: wrap; }
-.lunya-status {
+.orbita-feats .tick { color: var(--lu-secondary); font-size: 0.8rem; }
+.orbita-actions { display: flex; align-items: center; gap: 18px; margin-top: 32px; flex-wrap: wrap; }
+.orbita-status {
   display: inline-flex;
   align-items: center;
   gap: 9px;
@@ -813,7 +813,7 @@ h1, h2, h3, p { margin: 0; }
   text-transform: uppercase;
   color: var(--lu-muted);
 }
-.lunya-status .pulse {
+.orbita-status .pulse {
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -822,8 +822,8 @@ h1, h2, h3, p { margin: 0; }
   animation: pulse-ring 2s ease-out infinite;
 }
 
-.lunya-device { position: relative; display: grid; place-items: center; }
-.lunya-device-glow {
+.orbita-device { position: relative; display: grid; place-items: center; }
+.orbita-device-glow {
   position: absolute;
   inset: 8% 14%;
   border-radius: 50%;
@@ -885,14 +885,14 @@ h1, h2, h3, p { margin: 0; }
 .ph-txt { font-family: var(--font-alt); font-size: 0.78rem; color: var(--lu-dim); }
 .ph-val { font-family: var(--font-mono); font-size: 0.72rem; color: #fff; }
 
-.lunya-preview {
+.orbita-preview {
   position: relative;
   min-height: clamp(340px, 34vw, 470px);
   display: grid;
   align-items: center;
   isolation: isolate;
 }
-.lunya-shot {
+.orbita-shot {
   position: relative;
   z-index: 1;
   display: block;
@@ -906,20 +906,20 @@ h1, h2, h3, p { margin: 0; }
   text-decoration: none;
   transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
-.lunya-shot:hover {
+.orbita-shot:hover {
   transform: translateY(-8px);
   border-color: rgba(200, 255, 0, 0.45);
   box-shadow:
     0 40px 100px rgba(0, 0, 0, 0.56),
     0 0 58px rgba(0, 229, 255, 0.18);
 }
-.lunya-shot img {
+.orbita-shot img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.lunya-shot span {
+.orbita-shot span {
   position: absolute;
   left: 16px;
   bottom: 16px;
@@ -938,22 +938,23 @@ h1, h2, h3, p { margin: 0; }
   text-transform: uppercase;
   color: var(--lu-accent);
 }
-.lunya-shot--main {
+.orbita-shot--main {
   width: min(100%, 620px);
-  aspect-ratio: 924 / 540;
+  aspect-ratio: 16 / 10;
 }
-.lunya-shot--float {
+.orbita-shot--float {
   position: absolute;
-  right: -4%;
-  bottom: 4%;
-  width: min(54%, 360px);
-  aspect-ratio: 924 / 540;
+  right: -3%;
+  bottom: 9%;
+  width: min(29%, 176px);
+  aspect-ratio: 430 / 932;
+  border-radius: 22px;
   transform: translateY(0) rotate(1.5deg);
 }
-.lunya-shot--float:hover {
+.orbita-shot--float:hover {
   transform: translateY(-8px) rotate(1.5deg);
 }
-.lunya-specs {
+.orbita-specs {
   position: absolute;
   left: 5%;
   right: 9%;
@@ -963,7 +964,7 @@ h1, h2, h3, p { margin: 0; }
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
 }
-.lunya-specs span {
+.orbita-specs span {
   min-height: 42px;
   display: inline-flex;
   align-items: center;
@@ -1299,12 +1300,12 @@ h1, h2, h3, p { margin: 0; }
    Responsive
    ============================================================ */
 @media (max-width: 1080px) {
-  .lunya-grid { grid-template-columns: 1fr; gap: 36px; }
-  .lunya-device { order: -1; }
-  .lunya-preview { order: -1; min-height: auto; padding-bottom: 46px; }
-  .lunya-shot--main { width: 100%; }
-  .lunya-shot--float { right: 2%; bottom: 2%; width: min(46%, 340px); }
-  .lunya-specs { bottom: -2%; }
+  .orbita-grid { grid-template-columns: 1fr; gap: 36px; }
+  .orbita-device { order: -1; }
+  .orbita-preview { order: -1; min-height: auto; padding-bottom: 46px; }
+  .orbita-shot--main { width: 100%; }
+  .orbita-shot--float { right: 2%; bottom: 12%; width: min(24%, 200px); }
+  .orbita-specs { bottom: -2%; }
   .manifesto-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
 }
@@ -1322,16 +1323,17 @@ h1, h2, h3, p { margin: 0; }
   .steps { grid-template-columns: 1fr; }
   .hero-inner { margin-left: 0; }
   .hero-moon { left: auto; right: -120px; top: 38%; opacity: 0.3; width: min(88vw, 500px); }
-  .lunya-preview { padding-bottom: 0; gap: 14px; }
-  .lunya-shot--float {
+  .orbita-preview { padding-bottom: 0; gap: 14px; }
+  .orbita-shot--float {
     position: relative;
     right: auto;
     bottom: auto;
-    width: 100%;
+    width: min(62%, 260px);
+    margin-inline: auto;
     transform: none;
   }
-  .lunya-shot--float:hover { transform: translateY(-6px); }
-  .lunya-specs {
+  .orbita-shot--float:hover { transform: translateY(-6px); }
+  .orbita-specs {
     position: relative;
     left: auto;
     right: auto;
@@ -1349,17 +1351,17 @@ h1, h2, h3, p { margin: 0; }
   .hero-tagline { font-size: 1.04rem; }
   .btn { width: 100%; justify-content: center; }
   .hero-actions { width: 100%; }
-  .lunya-actions .btn { width: auto; }
+  .orbita-actions .btn { width: auto; }
   .bento { grid-auto-columns: minmax(260px, 88%); }
   .bento-card--feature, .bento-card--wide { grid-column: auto; }
   .section-head { margin-bottom: 38px; }
-  .lunya { padding-top: 44px; padding-bottom: 60px; }
-  .lunya-preview { gap: 12px; }
+  .orbita { padding-top: 44px; padding-bottom: 60px; }
+  .orbita-preview { gap: 12px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .phone { width: 240px; }
-  .lunya-shot { border-radius: 12px; }
-  .lunya-shot span { left: 10px; bottom: 10px; height: 30px; font-size: 0.62rem; }
-  .lunya-specs { grid-template-columns: 1fr; }
+  .orbita-shot { border-radius: 12px; }
+  .orbita-shot span { left: 10px; bottom: 10px; height: 30px; font-size: 0.62rem; }
+  .orbita-specs { grid-template-columns: 1fr; }
   .founder-photo { max-width: 330px; min-height: clamp(390px, 108vw, 500px); }
   .contact-copy .btn { width: auto; }
 }
